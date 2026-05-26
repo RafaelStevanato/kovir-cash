@@ -98,3 +98,23 @@
 - [ ] Começar código: Models + Schemas do backend
 - [ ] Configurar banco de dados PostgreSQL local
 
+#### 9. Configuração do Ambiente Virtual (venv)
+
+- **O quê:** Criado venv com Python 3.12 para isolar dependências do projeto
+- **Problema encontrado:** Python 3.14 (inicial) tinha incompatibilidade com Pydantic-core (Rust)
+- **Solução:** Downgrade para Python 3.12 (estável e production-grade)
+- **Passos:**
+  1. Deletado venv com Python 3.14
+  2. Criado novo venv: `py -3.12 -m venv venv`
+  3. Ativado: `.\venv\Scripts\Activate.ps1`
+  4. Instaladas dependências: `pip install -r backend/requirements.txt`
+
+#### 10. Instalação de Dependências do Backend
+
+- **O quê:** Todas as dependências do backend foram instaladas com sucesso
+- **Mudança no requirements.txt:**
+  - `psycopg2-binary` → `psycopg[binary]` (compatibilidade Windows)
+  - `pydantic==2.5.0` → `pydantic==2.6.0` (melhor compatibilidade)
+- **Status:** ✅ Todas as 19 dependências instaladas com sucesso
+- **Próximo passo:** Criar estrutura de pastas e Models do backend
+

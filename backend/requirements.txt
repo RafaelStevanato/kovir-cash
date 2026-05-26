@@ -8,11 +8,11 @@ uvicorn==0.27.0            # Servidor ASGI (Application Server) que roda aplica�
 
 # --- Banco de Dados ---
 sqlalchemy==2.0.23         # ORM (Object-Relational Mapping) para abstrair queries SQL em Python
-psycopg2-binary==2.9.9     # Driver PostgreSQL - permite SQLAlchemy comunicar com PostgreSQL
+psycopg[binary]     # Driver PostgreSQL - permite SQLAlchemy comunicar com PostgreSQL
 alembic==1.12.1            # Ferramenta de migrations - versionamento e controle do schema do banco
 
 # --- Validação de Dados ---
-pydantic==2.5.0            # Validação de dados em tempo de execução (schemas de entrada/saída)
+pydantic==2.6.0            # Validação de dados em tempo de execução (schemas de entrada/saída)
 pydantic-settings==2.1.0   # Gerenciador de variáveis de ambiente (.env) com tipagem
 
 # --- Upload de Arquivos ---
