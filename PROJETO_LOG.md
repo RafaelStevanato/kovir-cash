@@ -118,3 +118,16 @@
 - **Status:** ✅ Todas as 19 dependências instaladas com sucesso
 - **Próximo passo:** Criar estrutura de pastas e Models do backend
 
+#### 11. Criação de config.py e .env.example
+
+- **O quê:** Arquivo de configurações centralizado da aplicação
+- **config.py:** Classe Settings com Pydantic para ler variáveis de ambiente
+  - DATABASE_URL
+  - SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_HOURS
+  - DEBUG
+  - class Config interna (lê .env)
+  - Instância global `settings`
+- **.env.example:** Template com variáveis de exemplo
+- **Por quê:** Centralizar configurações, modular por ambiente (dev/test/prod)
+- **Status:** ✅ Pronto para ser copiado para .env
+
