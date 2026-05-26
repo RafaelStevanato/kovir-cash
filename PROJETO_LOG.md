@@ -50,3 +50,51 @@
 ✅ .gitignore configurado
 ✅ Documentação iniciada
 
+#### 7. Aprofundamento em Arquitetura e Conceitos
+
+- **O quê:** Estudo detalhado de:
+  - Relacionamentos de banco (1:N)
+  - Normalização e Foreign Keys
+  - Tipos de dados apropriados (DECIMAL para dinheiro, UUID)
+  - Métodos HTTP (GET, POST, PUT, DELETE)
+  - Status codes HTTP (401 vs 403)
+  - JWT (tokens de autenticação)
+  - Validação em 2 camadas (frontend + backend)
+  - Isolamento de dados por usuário
+
+- **Conceitos-chave aprendidos:**
+  - Separação de responsabilidades entre camadas
+  - Segurança: autenticação vs autorização
+  - Por que não confiamos apenas em validação frontend
+  - Como JWT funciona e por que não pode ser alterado
+
+#### 8. Documento ARQUITETURA.md Completo
+
+- **Seções criadas:**
+  1. Visão Geral
+  2. Padrão Arquitetural (Layered Architecture)
+  3. Estrutura de Pastas (backend e frontend)
+  4. Modelo de Dados (tabelas users e lancamentos)
+  5. Endpoints da API (7 endpoints principais)
+  6. Fluxos de Usuário (7 fluxos: login, criar, listar, editar, deletar, stats, logout)
+
+- **Por quê:** Documentação sólida para entender e apresentar a arquitetura a recrutadores
+
+---
+
+## Resumo do Dia
+
+✅ Repositório criado e sincronizado
+✅ Estrutura inicial montada
+✅ .gitignore configurado com entendimento
+✅ Arquitetura documentada completamente
+✅ Conceitos sênior de BD e API aprendidos
+✅ 3 commits feitos com histórico limpo
+
+## Próximas Sessões
+
+- [ ] Criar estrutura de pastas do backend (models, routes, services, repositories)
+- [ ] Criar estrutura de pastas do frontend (components, pages, services)
+- [ ] Começar código: Models + Schemas do backend
+- [ ] Configurar banco de dados PostgreSQL local
+
