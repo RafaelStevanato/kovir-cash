@@ -26,11 +26,27 @@
 - **Comando:** git clone git@github.com:RafaelStevanato/kovir-cash.git
 - **Por quê:** Trabalhar localmente com controle de versão
 
+#### 4. Estrutura de Pastas
+- **O quê:** Criadas pastas principais (backend, frontend, docs)
+- **Comando:** mkdir backend, frontend, docs
+- **Por quê:** Organizar código por contexto (separação de responsabilidades)
+
+#### 5. Criação de .gitignore
+- **O quê:** Arquivo .gitignore do zero, documentado
+- **Seções:** Python, Node/React, Ambiente, SO
+- **Por quê:** Evitar commitar arquivos desnecessários/sensíveis (venv/, node_modules/, .env, .DS_Store, etc)
+
+#### 6. Primeiro Commit
+- **Comando:** git commit -m "feat: estrutura inicial do projeto com .gitignore e documentação"
+- **Hash:** 6a2726e
+- **Arquivos:** .gitignore, PROJETO_LOG.md
+- **Push:** Sincronizado com GitHub
+
 ---
 
-## Próximos Passos
-- [ ] Criar estrutura de pastas (backend, frontend, docs)
-- [ ] Criar .gitignore do zero
-- [ ] Criar pasta docs com kovir-cash-contexto.md
-- [ ] Primeiro commit com estrutura base
+## Status Atual
+✅ Repositório criado e clonado
+✅ Estrutura básica pronta
+✅ .gitignore configurado
+✅ Documentação iniciada
 
