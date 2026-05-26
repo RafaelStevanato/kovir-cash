@@ -1,0 +1,40 @@
+﻿# =================== .gitignore | Kovir Cash ==============================
+
+# Arquivos que não serão commitados para o GitHub.
+
+# ======================= Python | Backend =================================
+
+__pycache__/
+*.pyc
+.Python
+venv/
+env/
+.pytest_cache/
+.coverage
+
+# ==========================================================================
+
+# ======================= Node/React | Frontend ============================
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+build/
+.env.local
+
+# ==========================================================================
+
+# ======================= AMBIENTE (Variáveis sensíveis) ===================
+
+.env
+.env.*.local
+
+# ==========================================================================
+
+# ======================= OS (Sistema Operacional) =========================
+
+.DS_Store
+Thumbs.db
+*.swp
