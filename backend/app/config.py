@@ -27,4 +27,4 @@ class Settings(BaseSettings):
 
     # --- Instância global de configurações --------------------------------------
 
-    settings = Settings()
+    settings = Settings()                                     # type: ignore
