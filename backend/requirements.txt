@@ -12,7 +12,7 @@ psycopg[binary]     # Driver PostgreSQL - permite SQLAlchemy comunicar com Postg
 alembic==1.12.1            # Ferramenta de migrations - versionamento e controle do schema do banco
 
 # --- Validação de Dados ---
-pydantic==2.6.0            # Validação de dados em tempo de execução (schemas de entrada/saída)
+pydantic[email]==2.6.0            # Validação de dados em tempo de execução (schemas de entrada/saída)
 pydantic-settings==2.1.0   # Gerenciador de variáveis de ambiente (.env) com tipagem
 
 # --- Upload de Arquivos ---

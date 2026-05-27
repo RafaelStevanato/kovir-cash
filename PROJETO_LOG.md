@@ -155,3 +155,16 @@
 - **Import centralizada:** models/__init__.py exporta User e Base
 - **Teste:** `python -c "from app.models.user import User"` ✅
 - **Status:** ✅ Pronto para criar o schema Pydantic
+
+#### 14. Criação de backend/app/schemas/user_schema.py (Pydantic validation)
+
+- **O quê:** Schemas para validação de entrada/saída de dados da API
+- **Schemas criados:**
+  - UserCreate: email (EmailStr) + password (min 8 chars) — o que vem do cliente
+  - UserResponse: id + email + criado_em (sem password) — o que retorna da API
+- **Config:** Ambos com json_schema_extra para exemplo no Swagger
+- **from_attributes:** UserResponse pode converter Model SQLAlchemy direto
+- **Dependência:** Atualizado requirements.txt: pydantic[email]==2.6.0
+- **Import centralizada:** schemas/__init__.py exporta ambos
+- **Teste:** `python -c "from app.schemas.user_schema import..."` ✅
+- **Status:** ✅ Pronto para criar as rotas de autenticação
