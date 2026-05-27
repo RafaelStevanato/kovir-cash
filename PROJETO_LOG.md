@@ -181,3 +181,19 @@
 - **Session:** Recebe Session como injeção de dependência (flexibilidade)
 - **Teste:** `python -c "from app.repositories.user_repository import..."` ✅
 - **Status:** ✅ Pronto para ser usado pelo Service
+
+#### 16. Criação de backend/app/services/auth_service.py (lógica de autenticação)
+
+- **O quê:** Serviço com lógica de negócio para autenticação
+- **Configuração:** CryptContext (bcrypt) para hash seguro de senhas
+- **Métodos estáticos:**
+  - `hash_password(password)`: hash com bcrypt
+  - `verify_password(plain, hashed)`: compara senha com hash
+  - `create_access_token(user_id)`: gera JWT com exp 24h (HS256)
+- **Métodos com dependência:**
+  - `signup(email, password)`: valida email único, hash, cria user, retorna token
+  - `login(email, password)`: busca user, valida password, retorna token
+- **Segurança:** Mensagens de erro genéricas ("Email ou senha incorretos") em ambos casos
+- **Retorno:** {"access_token", "token_type": "bearer", "user": {...}}
+- **Teste:** `python -c "from app.services.auth_service import..."` ✅
+- **Status:** ✅ Pronto para ser usado pelas rotas
