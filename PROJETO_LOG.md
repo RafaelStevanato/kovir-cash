@@ -142,3 +142,16 @@
 - **Teste:** `python main.py` → Uvicorn inicia em http://0.0.0.0:8000
 - **Validação:** GET http://localhost:8000/ retorna JSON com status ✅
 - **Status:** ✅ Pronto para montar as rotas de autenticação
+
+#### 13. Criação de backend/app/models/user.py (primeiro Model SQLAlchemy)
+
+- **O quê:** Definição da tabela 'users' usando SQLAlchemy ORM
+- **Campos:**
+  - id (UUID, primary key, auto-gerado)
+  - email (String, unique, indexed, obrigatório)
+  - password (String, obrigatório)
+  - criado_em (DateTime, auto-timestamp UTC)
+- **Base:** Criada class Base que todos os models herdam
+- **Import centralizada:** models/__init__.py exporta User e Base
+- **Teste:** `python -c "from app.models.user import User"` ✅
+- **Status:** ✅ Pronto para criar o schema Pydantic
