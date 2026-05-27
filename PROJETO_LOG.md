@@ -211,3 +211,17 @@
 - **Status codes:** 201 Created (signup), 200 OK (login)
 - **Placeholder:** get_db() vazio por enquanto (será implementado com database.py)
 - **Status:** ⏳ Aguardando database.py para estar funcional
+
+#### 18. Criação de backend/app/database.py (conexão com PostgreSQL)
+
+- **O quê:** Gerencia conexão SQLAlchemy com PostgreSQL
+- **Conteúdo:**
+  - `engine`: create_engine com DATABASE_URL (echo=DEBUG)
+  - `SessionLocal`: sessionmaker factory para criar sessions
+  - `get_db()`: generator que fornece session (yield) e fecha (finally)
+  - `init_db()`: cria todas as tabelas via Base.metadata.create_all()
+- **Driver:** psycopg (novo) — DATABASE_URL usa postgresql+psycopg://
+- **Dependência:** FastAPI injeta get_db() nas rotas via Depends()
+- **Padrão:** Session é criada por requisição, fechada após
+- **Teste:** `python -c "from app.database import..."` ✅
+- **Status:** ✅ Pronto para ser integrado em main.py

@@ -6,7 +6,7 @@ class Settings(BaseSettings):
 
     # --- Banco de Dados ---------------------------------------------------------
 
-    DATABASE_URL: str = "postgresql://user:password@localhost:5432/kovir_cash"
+    DATABASE_URL: str = "postgresql+psycopg://user:password@localhost:5432/kovir_cash"
 
 
     # --- JWT (Autenticação) -----------------------------------------------------
@@ -25,6 +25,6 @@ class Settings(BaseSettings):
         case_sensitive = True
 
 
-    # --- Instância global de configurações --------------------------------------
+# --- Instância global de configurações ------------------------------------------
 
-    settings = Settings()                                     # type: ignore
+settings = Settings()                                     
