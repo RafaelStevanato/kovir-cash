@@ -197,3 +197,17 @@
 - **Retorno:** {"access_token", "token_type": "bearer", "user": {...}}
 - **Teste:** `python -c "from app.services.auth_service import..."` ✅
 - **Status:** ✅ Pronto para ser usado pelas rotas
+
+#### 17. Criação de backend/app/routes/auth.py (endpoints de autenticação)
+
+- **O quê:** Rotas HTTP para sign-up e login
+- **Router:** APIRouter com prefix="/auth" (rotas em /auth/signup e /auth/login)
+- **Endpoints:**
+  - POST /auth/signup: cria user, retorna access_token + user
+  - POST /auth/login: autentica user, retorna access_token + user
+- **Validação:** Schemas Pydantic (UserCreate)
+- **Injeção de dependência:** db: Session = Depends(get_db)
+- **Erros:** HTTPException 400 (signup) e 401 (login)
+- **Status codes:** 201 Created (signup), 200 OK (login)
+- **Placeholder:** get_db() vazio por enquanto (será implementado com database.py)
+- **Status:** ⏳ Aguardando database.py para estar funcional
