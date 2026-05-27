@@ -131,3 +131,14 @@
 - **Por quê:** Centralizar configurações, modular por ambiente (dev/test/prod)
 - **Status:** ✅ Pronto para ser copiado para .env
 
+#### 12. Criação de backend/main.py (FastAPI básica)
+
+- **O quê:** Arquivo raiz da aplicação que inicia o servidor
+- **Conteúdo:**
+  - Import FastAPI e settings
+  - Criação da instância `app = FastAPI(...)`
+  - Rota GET / (health check) que retorna status da aplicação
+  - Bloco `if __name__ == "__main__"` para rodar com uvicorn
+- **Teste:** `python main.py` → Uvicorn inicia em http://0.0.0.0:8000
+- **Validação:** GET http://localhost:8000/ retorna JSON com status ✅
+- **Status:** ✅ Pronto para montar as rotas de autenticação
