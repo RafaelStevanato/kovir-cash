@@ -168,3 +168,16 @@
 - **Import centralizada:** schemas/__init__.py exporta ambos
 - **Teste:** `python -c "from app.schemas.user_schema import..."` ✅
 - **Status:** ✅ Pronto para criar as rotas de autenticação
+
+#### 15. Criação de backend/app/repositories/user_repository.py (acesso ao banco)
+
+- **O quê:** Abstração de operações no banco de dados para User
+- **Padrão:** Repository isolaça lógica de acesso ao banco
+- **Métodos:**
+  - `__init__(session)`: inicializa com sessão SQLAlchemy
+  - `create_user(email, hashed_password)`: cria user no banco, retorna User com ID gerado
+  - `get_user_by_email(email)`: busca user por email, retorna User ou None
+- **Benefício:** Se mudar PostgreSQL para MongoDB, muda só aqui, não muda Service/Routes
+- **Session:** Recebe Session como injeção de dependência (flexibilidade)
+- **Teste:** `python -c "from app.repositories.user_repository import..."` ✅
+- **Status:** ✅ Pronto para ser usado pelo Service
