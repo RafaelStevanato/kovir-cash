@@ -225,3 +225,14 @@
 - **Padrão:** Session é criada por requisição, fechada após
 - **Teste:** `python -c "from app.database import..."` ✅
 - **Status:** ✅ Pronto para ser integrado em main.py
+
+#### 19. Criação de docker-compose.yml (PostgreSQL containerizado)
+
+- **O quê:** Arquivo que define e roda PostgreSQL em Docker
+- **Serviços:** postgres:16 (imagem oficial PostgreSQL)
+- **Credenciais padrão:** user=postgres, password=postgres, db=kovir_cash
+- **Porta:** 5432 (padrão PostgreSQL)
+- **Volume:** postgres_data (persiste dados entre `up/down`)
+- **Uso:** `docker-compose up` → PostgreSQL rodando em 5s
+- **Benefício:** Dev padronizado (qualquer máquina roda igual)
+- **Status:** ✅ Pronto para testar conexão da API
