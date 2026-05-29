@@ -236,3 +236,63 @@
 - **Uso:** `docker-compose up` → PostgreSQL rodando em 5s
 - **Benefício:** Dev padronizado (qualquer máquina roda igual)
 - **Status:** ✅ Pronto para testar conexão da API
+
+---
+
+## Data: 29/05/2026
+
+#### 20. Debug e Resolução - Conflito PostgreSQL Nativo vs Docker
+
+- **O quê:** Resolver erro persistente de autenticação psycopg com PostgreSQL
+- **Problema:** API falhava ao iniciar com erro `FATAL: autenticação do tipo senha falhou para o usuário "postgres"`
+
+- **Tentativas Iniciais (4 explorações):**
+  1. Credenciais `user:password` → Usuário não criado automaticamente
+  2. Usuário `postgres` com SCRAM-SHA-256 → psycopg rejeitava senha
+  3. `POSTGRES_HOST_AUTH_METHOD: trust` → Pg_hba.conf não foi atualizado
+  4. Forçar `password_encryption=md5` → Ainda falhava
+
+- **Diagnóstico Profundo (O Eureka Moment!):**
+  - Executado: `netstat -ano | Select-String 5432`
+  - **Resultado:** DOIS processos escutando na porta 5432!
+    - PID 18024: `com.docker.backend` (Docker container) ✅
+    - PID 8072: `postgres.exe` (PostgreSQL 17 NATIVO no Windows!) ❌
+  - **Causa Raiz:** psycopg estava conectando no PostgreSQL nativo do Windows, não no Docker
+  - **Por quê:** O PostgreSQL nativo tinha credenciais/configuração diferentes
+
+- **Validações Realizadas:**
+  - ✅ Docker Compose: Container up, database criado
+  - ✅ Conectividade TCP: `Test-NetConnection localhost:5432` → Success
+  - ✅ Conexão direta (psql): `docker exec psql` → Conectava
+  - ❌ SQLAlchemy/psycopg: Falhava sempre
+  - 🔑 **Insight:** Port aberta ≠ Aplicação correta respondendo!
+
+- **Solução Aplicada:**
+  ```powershell
+  Stop-Service postgresql-x64-17
+  Set-Service postgresql-x64-17 -StartupType Manual
+  ```
+  - Parou o serviço PostgreSQL nativo do Windows
+  - Configurou para não iniciar automaticamente no reboot
+  - Liberou porta 5432 exclusivamente para Docker
+
+- **Validação Final:**
+  - `netstat` após parar: Apenas PID 18024 (Docker) ✅
+  - Teste psycopg direto: `SUCESSO! Conectado ao PostgreSQL Docker` ✅
+  - `SELECT version()`: `PostgreSQL 15.18 (Debian 15.18-1.pgdg13+1)` ✅
+  - API iniciou sem erros: ✅
+
+- **Lições Críticas Aprendidas:**
+  1. **Multiplos processos na mesma porta** → Sempre usar `netstat -ano` ou `Get-Process` para diagnosticar
+  2. **Port aberta ≠ Aplicação correta** → Verificar qual processo está realmente escutando
+  3. **Ferramentas diferentes, comportamentos diferentes** → `psql` (libpq) vs `psycopg` (Python driver)
+  4. **PostgreSQL 16 vs 15** → Mudança de autenticação SCRAM-SHA-256 causou confusão
+  5. **Documentação salva vidas** → Criar RELATORIO-DEBUG-POSTGRESQL.md ajudou a organizar pensamento
+
+- **Arquivos Criados Nesta Sessão:**
+  - `RELATORIO-DEBUG-POSTGRESQL.md` → Documentação completa do debugging
+  - Atualizado `docker-compose.yml` → postgres:15 (compatibilidade melhor)
+  - Confirmado `config.py` e `database.py` estão corretos
+
+- **Status:** ✅ API 100% funcional com PostgreSQL 15 Docker
+- **Próximo passo:** Testar endpoints no Swagger (GET /, POST /auth/signup, POST /auth/login)
