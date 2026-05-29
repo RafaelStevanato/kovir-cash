@@ -2,12 +2,23 @@
 version: '3.9'
 
 services:
+  api:
+    depends_on:
+      - postgres
+    build: ./backend
+    ports:
+      - 8000:8000
+    environment:
+      DATABASE_URL: "postgresql+psycopg://postgres:postgres@postgres:5432/kovir_cash"
+    
+  
   postgres:
     image: postgres:16
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: kovir_cash
+        
     ports:
       - "5432:5432"
     volumes:

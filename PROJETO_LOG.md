@@ -296,3 +296,16 @@
 
 - **Status:** ✅ API 100% funcional com PostgreSQL 15 Docker
 - **Próximo passo:** Testar endpoints no Swagger (GET /, POST /auth/signup, POST /auth/login)
+
+#### 21. Configuração Docker (Dockerfile + docker-compose.yml)
+
+- **O quê:** Criar Dockerfile para empacotar API e atualizar docker-compose.yml com serviço api
+- **Criado:** `backend/Dockerfile` (6 linhas: FROM python:3.12 → RUN pip → COPY → CMD uvicorn)
+- **Atualizado:** `docker-compose.yml` → adicionado serviço `api` com `build: ./backend`, `ports: 8000:8000`
+- **Debug:** 
+  - ❌ DATABASE_URL em docker-compose faltava driver `+psycopg` → Corrigido
+  - ❌ Host era `localhost` (local) → Mudado para `postgres` (service name em Docker)
+  - ✅ Segundo `docker-compose up` → **API RODANDO!** Uvicorn em http://0.0.0.0:8000
+  - ✅ SQLAlchemy criou tabela `users` automaticamente via `init_db()`
+- **Resultado:** API + PostgreSQL rodando em Docker, containers conectados, volume persistindo dados
+- **Status:** ✅ Docker funcional, pronto para commit

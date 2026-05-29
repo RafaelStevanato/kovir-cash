@@ -6,7 +6,7 @@ class Settings(BaseSettings):
 
     # --- Banco de Dados ---------------------------------------------------------
 
-    DATABASE_URL: str = "postgresql+psycopg://user:password@localhost:5432/kovir_cash"
+    DATABASE_URL: str = "postgresql+psycopg://postgres:postgres@localhost:5432/kovir_cash"
 
 
     # --- JWT (Autenticação) -----------------------------------------------------
