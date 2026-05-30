@@ -1,4 +1,5 @@
 from pydantic_settings import BaseSettings
+from pydantic import Field
 
 # --- Configurações da aplicação Kovir Cash --------------------------------------
 class Settings(BaseSettings):
@@ -6,14 +7,21 @@ class Settings(BaseSettings):
 
     # --- Banco de Dados ---------------------------------------------------------
 
-    DATABASE_URL: str = "postgresql+psycopg://postgres:postgres@localhost:5432/kovir_cash"
+    DATABASE_URL: str = Field(
+        ...,
+        description="URL de conexão PostgreSQL. Formato: postgresql+psycopg://usuario:senha@host:porta/nome-banco-de-dados"
+    )
 
 
     # --- JWT (Autenticação) -----------------------------------------------------
 
-    SECRET_KEY: str = "minha-chave-secreta-mude-em-producao"  # type: ignore
-    ALGORITHM : str = "HS256"                                 # type: ignore
-    ACCES_TOKEN_EXPIRE_HOURS: int = 24
+    SECRET_KEY: str = Field(
+        ...,
+        description="Chave secreta para autenticação de JWT. Gere com: python -c 'import secrets; print(secrets.token_urlsafe(32))'"
+    )
+    
+    ALGORITHM : str = "HS256"
+    ACCESS_TOKEN_EXPIRE_HOURS: int = 24
 
 
     # --- Aplicação --------------------------------------------------------------
