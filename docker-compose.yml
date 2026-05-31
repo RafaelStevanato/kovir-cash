@@ -9,14 +9,14 @@ services:
     ports:
       - 8000:8000
     environment:
-      DATABASE_URL: "postgresql+psycopg://postgres:postgres@postgres:5432/kovir_cash"
+      DATABASE_URL: ${DATABASE_URL}
     
   
   postgres:
     image: postgres:16
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: kovir_cash
         
     ports:
