@@ -1,311 +1,476 @@
-﻿# Kovir Cash - Projeto Log
+# Kovir Cash — Projeto Log
 
-## Data: 26/05/2026
-
-### Ações Realizadas
-
-#### 1. Criação do Repositório GitHub
-- **O quê:** Repositório kovir-cash criado em GitHub
-- **Opções escolhidas:**
-  - Visibilidade: Public
-  - README: Adicionado (automático)
-  - .gitignore: Não (será criado manualmente)
-  - License: Nenhuma (pode ser adicionada depois)
-- **Por quê:** Estrutura inicial limpa, documentação desde o início
-
-#### 2. Configuração SSH
-- **O quê:** Geração de par de chaves SSH (RSA 4096)
-- **Passos:**
-  - Gerei chaves em ~/.ssh/id_rsa e ~/.ssh/id_rsa.pub
-  - Adicionei chave pública ao GitHub
-  - Testei conexão com 'ssh -T git@github.com'
-- **Por quê:** SSH é mais seguro que HTTPS, melhor prática profissional
-
-#### 3. Clone do Repositório
-- **O quê:** Repositório clonado para C:\Users\Rafael Stevanato\Desktop\GitHub\kovir-cash
-- **Comando:** git clone git@github.com:RafaelStevanato/kovir-cash.git
-- **Por quê:** Trabalhar localmente com controle de versão
-
-#### 4. Estrutura de Pastas
-- **O quê:** Criadas pastas principais (backend, frontend, docs)
-- **Comando:** mkdir backend, frontend, docs
-- **Por quê:** Organizar código por contexto (separação de responsabilidades)
-
-#### 5. Criação de .gitignore
-- **O quê:** Arquivo .gitignore do zero, documentado
-- **Seções:** Python, Node/React, Ambiente, SO
-- **Por quê:** Evitar commitar arquivos desnecessários/sensíveis (venv/, node_modules/, .env, .DS_Store, etc)
-
-#### 6. Primeiro Commit
-- **Comando:** git commit -m "feat: estrutura inicial do projeto com .gitignore e documentação"
-- **Hash:** 6a2726e
-- **Arquivos:** .gitignore, PROJETO_LOG.md
-- **Push:** Sincronizado com GitHub
+> Histórico de desenvolvimento organizado em Sprints.
+> Cada Sprint tem objetivo claro, logs detalhados e status.
+> Formato profissional para apresentação a recrutadores.
 
 ---
 
-## Status Atual
-✅ Repositório criado e clonado
-✅ Estrutura básica pronta
-✅ .gitignore configurado
-✅ Documentação iniciada
+## ÍNDICE DE SPRINTS
 
-#### 7. Aprofundamento em Arquitetura e Conceitos
+| Sprint | Objetivo | Status |
+|--------|----------|--------|
+| [Sprint 1](#sprint-1) | Setup e Fundação do Projeto | ✅ Concluída |
+| [Sprint 2](#sprint-2) | Arquitetura e Modelagem | ✅ Concluída |
+| [Sprint 3](#sprint-3) | Backend Core (Autenticação) | ✅ Concluída |
+| [Sprint 4](#sprint-4) | Docker e DevOps | ✅ Concluída |
+| [Sprint 5](#sprint-5) | Segurança e Boas Práticas | ✅ Concluída |
 
-- **O quê:** Estudo detalhado de:
-  - Relacionamentos de banco (1:N)
+---
+
+<a name="sprint-1"></a>
+## Sprint 1 — Setup e Fundação do Projeto
+
+**Período:** 26/05/2026
+**Objetivo:** Criar repositório, configurar ambiente git e estabelecer estrutura base do projeto.
+**Branch:** `main`
+
+---
+
+### Log 1 — Criação do Repositório GitHub
+
+- **O quê:** Repositório kovir-cash criado no GitHub
+- **Decisões:**
+  - Visibilidade: Public (recrutadores vão ver)
+  - README: Adicionado automaticamente
+  - .gitignore: Não (criado manualmente para aprender)
+  - License: Nenhuma por enquanto
+- **Por quê:** Estrutura inicial limpa, documentação desde o início
+
+---
+
+### Log 2 — Configuração SSH
+
+- **O quê:** Geração de par de chaves SSH (RSA 4096)
+- **Passos:**
+  1. Gerei chaves em `~/.ssh/id_rsa` e `~/.ssh/id_rsa.pub`
+  2. Adicionei chave pública ao GitHub
+  3. Testei conexão com `ssh -T git@github.com`
+- **Por quê:** SSH é mais seguro que HTTPS — melhor prática profissional
+
+---
+
+### Log 3 — Clone do Repositório
+
+- **O quê:** Repositório clonado localmente
+- **Comando:** `git clone git@github.com:RafaelStevanato/kovir-cash.git`
+- **Destino:** `C:\Users\Rafael Stevanato\Desktop\GitHub\kovir-cash`
+- **Por quê:** Trabalhar localmente com controle de versão via SSH
+
+---
+
+### Log 4 — Estrutura de Pastas
+
+- **O quê:** Criadas pastas principais do projeto
+- **Estrutura:** `backend/`, `frontend/`, `docs/`
+- **Por quê:** Separação de responsabilidades desde o início (backend ≠ frontend)
+
+---
+
+### Log 5 — Criação de .gitignore
+
+- **O quê:** Arquivo `.gitignore` criado do zero com documentação interna
+- **Seções:** Python, Node/React, Ambiente, Sistema Operacional
+- **Por quê:** Evitar commitar arquivos sensíveis (`venv/`, `node_modules/`, `.env`, `.DS_Store`)
+
+---
+
+### Log 6 — Primeiro Commit
+
+- **Commit:** `6a2726e feat: estrutura inicial do projeto com .gitignore e documentação`
+- **Arquivos:** `.gitignore`, `PROJETO_LOG.md`
+- **Por quê:** Registrar ponto inicial no histórico do projeto
+
+---
+
+**✅ Sprint 1 Concluída**
+- Repositório público no GitHub
+- SSH configurado (seguro)
+- Estrutura base criada
+- Histórico iniciado com commit profissional
+
+---
+
+<a name="sprint-2"></a>
+## Sprint 2 — Arquitetura e Modelagem
+
+**Período:** 26/05/2026
+**Objetivo:** Desenhar e documentar a arquitetura antes de começar a codar.
+**Branch:** `main`
+
+---
+
+### Log 7 — Aprofundamento em Arquitetura e Conceitos
+
+- **O quê:** Estudo detalhado de fundamentos antes de codar
+- **Conceitos estudados:**
+  - Relacionamentos de banco (1:N entre users e lancamentos)
   - Normalização e Foreign Keys
-  - Tipos de dados apropriados (DECIMAL para dinheiro, UUID)
-  - Métodos HTTP (GET, POST, PUT, DELETE)
-  - Status codes HTTP (401 vs 403)
-  - JWT (tokens de autenticação)
-  - Validação em 2 camadas (frontend + backend)
-  - Isolamento de dados por usuário
+  - Tipos de dados: `DECIMAL` para dinheiro, `UUID` para IDs
+  - Métodos HTTP: GET, POST, PUT, DELETE
+  - Status codes: 401 vs 403 (autenticação vs autorização)
+  - JWT (tokens de autenticação stateless)
+  - Validação em 2 camadas: Schema (formato) + Service (lógica de negócio)
+  - Isolamento de dados por usuário (um usuário não vê dados de outro)
+- **Decisão de Arquitetura:** Layered Architecture (Route → Service → Repository → Model)
+- **Por quê:** Arquitetura pensada antes de codar evita retrabalho. Devs sênior planejam primeiro.
 
-- **Conceitos-chave aprendidos:**
-  - Separação de responsabilidades entre camadas
-  - Segurança: autenticação vs autorização
-  - Por que não confiamos apenas em validação frontend
-  - Como JWT funciona e por que não pode ser alterado
+---
 
-#### 8. Documento ARQUITETURA.md Completo
+### Log 8 — Documento ARQUITETURA.md
 
+- **O quê:** Documentação completa da arquitetura do sistema
 - **Seções criadas:**
   1. Visão Geral
   2. Padrão Arquitetural (Layered Architecture)
   3. Estrutura de Pastas (backend e frontend)
-  4. Modelo de Dados (tabelas users e lancamentos)
+  4. Modelo de Dados (tabelas `users` e `lancamentos`)
   5. Endpoints da API (7 endpoints principais)
-  6. Fluxos de Usuário (7 fluxos: login, criar, listar, editar, deletar, stats, logout)
-
-- **Por quê:** Documentação sólida para entender e apresentar a arquitetura a recrutadores
+  6. Fluxos de Usuário (login, criar, listar, editar, deletar, stats, logout)
+- **Por quê:** Documentação visível no GitHub mostra maturidade técnica ao recrutador
 
 ---
 
-## Resumo do Dia
+**✅ Sprint 2 Concluída**
+- Arquitetura decidida e documentada
+- Modelo de dados definido antes de implementar
+- Fluxos de usuário mapeados
+- Pronto para começar o código com clareza
 
-✅ Repositório criado e sincronizado
-✅ Estrutura inicial montada
-✅ .gitignore configurado com entendimento
-✅ Arquitetura documentada completamente
-✅ Conceitos sênior de BD e API aprendidos
-✅ 3 commits feitos com histórico limpo
+---
 
-## Próximas Sessões
+<a name="sprint-3"></a>
+## Sprint 3 — Backend Core (Autenticação)
 
-- [ ] Criar estrutura de pastas do backend (models, routes, services, repositories)
-- [ ] Criar estrutura de pastas do frontend (components, pages, services)
-- [ ] Começar código: Models + Schemas do backend
-- [ ] Configurar banco de dados PostgreSQL local
+**Período:** 26/05/2026 → 27/05/2026
+**Objetivo:** Implementar toda a stack de autenticação (signup + login) seguindo Layered Architecture.
+**Branch:** `main`
+**Stack:** Python 3.12, FastAPI, SQLAlchemy 2.x, Pydantic v2, bcrypt, JWT
 
-#### 9. Configuração do Ambiente Virtual (venv)
+---
 
-- **O quê:** Criado venv com Python 3.12 para isolar dependências do projeto
-- **Problema encontrado:** Python 3.14 (inicial) tinha incompatibilidade com Pydantic-core (Rust)
-- **Solução:** Downgrade para Python 3.12 (estável e production-grade)
+### Log 9 — Configuração do Ambiente Virtual (venv)
+
+- **O quê:** Criado venv com Python 3.12 para isolar dependências
+- **Problema encontrado:** Python 3.14 tinha incompatibilidade com `pydantic-core` (compilado em Rust)
+- **Solução:** Downgrade para Python 3.12 (versão estável e production-grade)
 - **Passos:**
   1. Deletado venv com Python 3.14
-  2. Criado novo venv: `py -3.12 -m venv venv`
-  3. Ativado: `.\venv\Scripts\Activate.ps1`
-  4. Instaladas dependências: `pip install -r backend/requirements.txt`
-
-#### 10. Instalação de Dependências do Backend
-
-- **O quê:** Todas as dependências do backend foram instaladas com sucesso
-- **Mudança no requirements.txt:**
-  - `psycopg2-binary` → `psycopg[binary]` (compatibilidade Windows)
-  - `pydantic==2.5.0` → `pydantic==2.6.0` (melhor compatibilidade)
-- **Status:** ✅ Todas as 19 dependências instaladas com sucesso
-- **Próximo passo:** Criar estrutura de pastas e Models do backend
-
-#### 11. Criação de config.py e .env.example
-
-- **O quê:** Arquivo de configurações centralizado da aplicação
-- **config.py:** Classe Settings com Pydantic para ler variáveis de ambiente
-  - DATABASE_URL
-  - SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_HOURS
-  - DEBUG
-  - class Config interna (lê .env)
-  - Instância global `settings`
-- **.env.example:** Template com variáveis de exemplo
-- **Por quê:** Centralizar configurações, modular por ambiente (dev/test/prod)
-- **Status:** ✅ Pronto para ser copiado para .env
-
-#### 12. Criação de backend/main.py (FastAPI básica)
-
-- **O quê:** Arquivo raiz da aplicação que inicia o servidor
-- **Conteúdo:**
-  - Import FastAPI e settings
-  - Criação da instância `app = FastAPI(...)`
-  - Rota GET / (health check) que retorna status da aplicação
-  - Bloco `if __name__ == "__main__"` para rodar com uvicorn
-- **Teste:** `python main.py` → Uvicorn inicia em http://0.0.0.0:8000
-- **Validação:** GET http://localhost:8000/ retorna JSON com status ✅
-- **Status:** ✅ Pronto para montar as rotas de autenticação
-
-#### 13. Criação de backend/app/models/user.py (primeiro Model SQLAlchemy)
-
-- **O quê:** Definição da tabela 'users' usando SQLAlchemy ORM
-- **Campos:**
-  - id (UUID, primary key, auto-gerado)
-  - email (String, unique, indexed, obrigatório)
-  - password (String, obrigatório)
-  - criado_em (DateTime, auto-timestamp UTC)
-- **Base:** Criada class Base que todos os models herdam
-- **Import centralizada:** models/__init__.py exporta User e Base
-- **Teste:** `python -c "from app.models.user import User"` ✅
-- **Status:** ✅ Pronto para criar o schema Pydantic
-
-#### 14. Criação de backend/app/schemas/user_schema.py (Pydantic validation)
-
-- **O quê:** Schemas para validação de entrada/saída de dados da API
-- **Schemas criados:**
-  - UserCreate: email (EmailStr) + password (min 8 chars) — o que vem do cliente
-  - UserResponse: id + email + criado_em (sem password) — o que retorna da API
-- **Config:** Ambos com json_schema_extra para exemplo no Swagger
-- **from_attributes:** UserResponse pode converter Model SQLAlchemy direto
-- **Dependência:** Atualizado requirements.txt: pydantic[email]==2.6.0
-- **Import centralizada:** schemas/__init__.py exporta ambos
-- **Teste:** `python -c "from app.schemas.user_schema import..."` ✅
-- **Status:** ✅ Pronto para criar as rotas de autenticação
-
-#### 15. Criação de backend/app/repositories/user_repository.py (acesso ao banco)
-
-- **O quê:** Abstração de operações no banco de dados para User
-- **Padrão:** Repository isolaça lógica de acesso ao banco
-- **Métodos:**
-  - `__init__(session)`: inicializa com sessão SQLAlchemy
-  - `create_user(email, hashed_password)`: cria user no banco, retorna User com ID gerado
-  - `get_user_by_email(email)`: busca user por email, retorna User ou None
-- **Benefício:** Se mudar PostgreSQL para MongoDB, muda só aqui, não muda Service/Routes
-- **Session:** Recebe Session como injeção de dependência (flexibilidade)
-- **Teste:** `python -c "from app.repositories.user_repository import..."` ✅
-- **Status:** ✅ Pronto para ser usado pelo Service
-
-#### 16. Criação de backend/app/services/auth_service.py (lógica de autenticação)
-
-- **O quê:** Serviço com lógica de negócio para autenticação
-- **Configuração:** CryptContext (bcrypt) para hash seguro de senhas
-- **Métodos estáticos:**
-  - `hash_password(password)`: hash com bcrypt
-  - `verify_password(plain, hashed)`: compara senha com hash
-  - `create_access_token(user_id)`: gera JWT com exp 24h (HS256)
-- **Métodos com dependência:**
-  - `signup(email, password)`: valida email único, hash, cria user, retorna token
-  - `login(email, password)`: busca user, valida password, retorna token
-- **Segurança:** Mensagens de erro genéricas ("Email ou senha incorretos") em ambos casos
-- **Retorno:** {"access_token", "token_type": "bearer", "user": {...}}
-- **Teste:** `python -c "from app.services.auth_service import..."` ✅
-- **Status:** ✅ Pronto para ser usado pelas rotas
-
-#### 17. Criação de backend/app/routes/auth.py (endpoints de autenticação)
-
-- **O quê:** Rotas HTTP para sign-up e login
-- **Router:** APIRouter com prefix="/auth" (rotas em /auth/signup e /auth/login)
-- **Endpoints:**
-  - POST /auth/signup: cria user, retorna access_token + user
-  - POST /auth/login: autentica user, retorna access_token + user
-- **Validação:** Schemas Pydantic (UserCreate)
-- **Injeção de dependência:** db: Session = Depends(get_db)
-- **Erros:** HTTPException 400 (signup) e 401 (login)
-- **Status codes:** 201 Created (signup), 200 OK (login)
-- **Placeholder:** get_db() vazio por enquanto (será implementado com database.py)
-- **Status:** ⏳ Aguardando database.py para estar funcional
-
-#### 18. Criação de backend/app/database.py (conexão com PostgreSQL)
-
-- **O quê:** Gerencia conexão SQLAlchemy com PostgreSQL
-- **Conteúdo:**
-  - `engine`: create_engine com DATABASE_URL (echo=DEBUG)
-  - `SessionLocal`: sessionmaker factory para criar sessions
-  - `get_db()`: generator que fornece session (yield) e fecha (finally)
-  - `init_db()`: cria todas as tabelas via Base.metadata.create_all()
-- **Driver:** psycopg (novo) — DATABASE_URL usa postgresql+psycopg://
-- **Dependência:** FastAPI injeta get_db() nas rotas via Depends()
-- **Padrão:** Session é criada por requisição, fechada após
-- **Teste:** `python -c "from app.database import..."` ✅
-- **Status:** ✅ Pronto para ser integrado em main.py
-
-#### 19. Criação de docker-compose.yml (PostgreSQL containerizado)
-
-- **O quê:** Arquivo que define e roda PostgreSQL em Docker
-- **Serviços:** postgres:16 (imagem oficial PostgreSQL)
-- **Credenciais padrão:** user=postgres, password=postgres, db=kovir_cash
-- **Porta:** 5432 (padrão PostgreSQL)
-- **Volume:** postgres_data (persiste dados entre `up/down`)
-- **Uso:** `docker-compose up` → PostgreSQL rodando em 5s
-- **Benefício:** Dev padronizado (qualquer máquina roda igual)
-- **Status:** ✅ Pronto para testar conexão da API
+  2. `py -3.12 -m venv venv`
+  3. `.\venv\Scripts\Activate.ps1`
+  4. `pip install -r backend/requirements.txt`
+- **Lição:** Sempre usar Python LTS em projetos profissionais
 
 ---
 
-## Data: 29/05/2026
+### Log 10 — Instalação de Dependências do Backend
 
-#### 20. Debug e Resolução - Conflito PostgreSQL Nativo vs Docker
+- **O quê:** Todas as dependências instaladas com sucesso
+- **Ajustes no requirements.txt:**
+  - `psycopg2-binary` → `psycopg[binary]` (compatibilidade Windows)
+  - `pydantic==2.5.0` → `pydantic==2.6.0` (melhor compatibilidade com Python 3.12)
+- **Resultado:** ✅ 19 dependências instaladas sem erros
 
-- **O quê:** Resolver erro persistente de autenticação psycopg com PostgreSQL
-- **Problema:** API falhava ao iniciar com erro `FATAL: autenticação do tipo senha falhou para o usuário "postgres"`
+---
 
-- **Tentativas Iniciais (4 explorações):**
-  1. Credenciais `user:password` → Usuário não criado automaticamente
-  2. Usuário `postgres` com SCRAM-SHA-256 → psycopg rejeitava senha
-  3. `POSTGRES_HOST_AUTH_METHOD: trust` → Pg_hba.conf não foi atualizado
-  4. Forçar `password_encryption=md5` → Ainda falhava
+### Log 11 — config.py e .env.example
 
-- **Diagnóstico Profundo (O Eureka Moment!):**
-  - Executado: `netstat -ano | Select-String 5432`
-  - **Resultado:** DOIS processos escutando na porta 5432!
-    - PID 18024: `com.docker.backend` (Docker container) ✅
-    - PID 8072: `postgres.exe` (PostgreSQL 17 NATIVO no Windows!) ❌
-  - **Causa Raiz:** psycopg estava conectando no PostgreSQL nativo do Windows, não no Docker
-  - **Por quê:** O PostgreSQL nativo tinha credenciais/configuração diferentes
+- **O quê:** Arquivo de configurações centralizado usando Pydantic BaseSettings
+- **config.py:** Classe `Settings` com:
+  - `DATABASE_URL`, `SECRET_KEY`, `ALGORITHM`, `ACCESS_TOKEN_EXPIRE_HOURS`, `DEBUG`
+  - Lê automaticamente do arquivo `.env`
+  - Instância global `settings` (importada em todo o projeto)
+- **.env.example:** Template público com variáveis (sem valores reais)
+- **Analogia:** `config.py` é o "painel de controle" da aplicação
+- **Por quê:** Centralizar configurações facilita mudança entre ambientes (dev/test/prod)
 
-- **Validações Realizadas:**
-  - ✅ Docker Compose: Container up, database criado
-  - ✅ Conectividade TCP: `Test-NetConnection localhost:5432` → Success
-  - ✅ Conexão direta (psql): `docker exec psql` → Conectava
-  - ❌ SQLAlchemy/psycopg: Falhava sempre
-  - 🔑 **Insight:** Port aberta ≠ Aplicação correta respondendo!
+---
 
-- **Solução Aplicada:**
+### Log 12 — backend/main.py (FastAPI)
+
+- **O quê:** Ponto de entrada da aplicação
+- **Conteúdo:**
+  - Instância `app = FastAPI(title="Kovir Cash API")`
+  - Rota `GET /` (health check)
+  - Bloco `if __name__ == "__main__"` para rodar com uvicorn
+- **Validação:** `GET http://localhost:8000/` → JSON com status ✅
+
+---
+
+### Log 13 — app/models/user.py (SQLAlchemy ORM)
+
+- **O quê:** Definição da tabela `users` no banco
+- **Campos:**
+  - `id`: UUID, primary key, auto-gerado
+  - `email`: String, unique, indexed
+  - `password`: String (hash bcrypt, nunca plain text)
+  - `criado_em`: DateTime com timestamp UTC automático
+- **Analogia:** Model é o "livro de registros" — define a estrutura da tabela
+- **Teste:** `python -c "from app.models.user import User"` ✅
+
+---
+
+### Log 14 — app/schemas/user_schema.py (Pydantic)
+
+- **O quê:** Schemas para validação de entrada/saída da API
+- **Schemas:**
+  - `UserCreate`: `email` (EmailStr) + `password` (mínimo 8 chars) — o que vem do cliente
+  - `UserResponse`: `id` + `email` + `criado_em` (sem password) — o que retorna
+- **Lição crítica:** Schema nunca retorna `password` — segurança por design
+- **Analogia:** Schema é o "cardápio" — valida o formato do pedido antes de passar ao chef
+- **Teste:** `python -c "from app.schemas.user_schema import UserCreate"` ✅
+
+---
+
+### Log 15 — app/repositories/user_repository.py
+
+- **O quê:** Camada de acesso ao banco de dados
+- **Métodos:**
+  - `create_user(email, hashed_password)` → cria user, retorna User com UUID gerado
+  - `get_user_by_email(email)` → busca user, retorna `User | None`
+- **Princípio:** Repository recebe Session como injeção de dependência
+- **Benefício:** Se mudar PostgreSQL → MongoDB, muda só aqui. Service e Routes não mudam.
+- **Analogia:** Repository é o "estoque" — sabe onde estão os ingredientes (dados)
+- **Teste:** `python -c "from app.repositories.user_repository import UserRepository"` ✅
+
+---
+
+### Log 16 — app/services/auth_service.py
+
+- **O quê:** Lógica de negócio de autenticação
+- **Métodos:**
+  - `hash_password(password)` → bcrypt hash
+  - `verify_password(plain, hashed)` → compara com hash
+  - `create_access_token(user_id)` → JWT com expiração configurável
+  - `signup(email, password)` → valida email único → hash → cria user → retorna token
+  - `login(email, password)` → busca user → valida senha → retorna token
+- **Segurança:** Mensagens de erro genéricas ("Email ou senha incorretos") nos dois casos
+- **Por quê:** Erro específico ("email não existe") ajuda atacantes — erro genérico protege
+- **Analogia:** Service é o "chef" — recebe pedido validado e executa a lógica real
+- **Teste:** `python -c "from app.services.auth_service import AuthService"` ✅
+
+---
+
+### Log 17 — app/routes/auth.py
+
+- **O quê:** Endpoints HTTP de autenticação
+- **Endpoints:**
+  - `POST /auth/signup` → cria conta → retorna `access_token` (201 Created)
+  - `POST /auth/login` → autentica → retorna `access_token` (200 OK)
+- **Tratamento de erros:**
+  - `ValueError` → `HTTPException 400` (signup) ou `401` (login)
+- **Placeholder:** `get_db()` vazio — implementado após `database.py`
+- **Analogia:** Route é o "garçom" — recebe pedido do cliente, passa pro chef (Service)
+
+---
+
+### Log 18 — app/database.py (Conexão PostgreSQL)
+
+- **O quê:** Gerenciamento de conexão SQLAlchemy com PostgreSQL
+- **Conteúdo:**
+  - `engine`: `create_engine` com `DATABASE_URL` e `echo=DEBUG`
+  - `SessionLocal`: factory para criar sessions por requisição
+  - `get_db()`: generator com `yield` — fornece session e fecha no `finally`
+  - `init_db()`: cria todas as tabelas via `Base.metadata.create_all()`
+- **Padrão:** Uma session por requisição HTTP, fechada ao final
+- **Driver:** `psycopg` (novo driver async-compatible) — URL usa `postgresql+psycopg://`
+- **Teste:** `python -c "from app.database import get_db, init_db"` ✅
+
+---
+
+**✅ Sprint 3 Concluída**
+- Layered Architecture implementada (Route → Service → Repository → Model)
+- Signup e login funcionais
+- JWT gerado com bcrypt
+- Validação em 2 camadas (Schema + Service)
+- Todos os imports testados
+
+---
+
+<a name="sprint-4"></a>
+## Sprint 4 — Docker e DevOps
+
+**Período:** 29/05/2026
+**Objetivo:** Containerizar a API e o banco de dados. Resolver conflito de portas no ambiente local.
+**Branch:** `main`
+
+---
+
+### Log 19 — docker-compose.yml (PostgreSQL containerizado)
+
+- **O quê:** Arquivo que define e roda PostgreSQL em Docker
+- **Serviços:** `postgres:16` (imagem oficial)
+- **Configurações:** usuário, senha, banco `kovir_cash`
+- **Volume:** `postgres_data` — persiste dados entre `up/down`
+- **Por quê:** Dev padronizado — qualquer máquina roda igual com um comando
+
+---
+
+### Log 20 — Debug: Conflito PostgreSQL Nativo vs Docker
+
+- **Problema:** API falhava com `FATAL: autenticação do tipo senha falhou`
+- **Tentativas sem sucesso:**
+  1. Credenciais `user:password` → usuário não criado automaticamente
+  2. SCRAM-SHA-256 → psycopg rejeitava
+  3. `POSTGRES_HOST_AUTH_METHOD: trust` → pg_hba.conf não atualizado
+  4. `password_encryption=md5` → ainda falhava
+
+- **Diagnóstico (o momento "eureka"):**
+  ```powershell
+  netstat -ano | Select-String 5432
+  ```
+  **Resultado:** DOIS processos escutando na porta 5432!
+  - PID 18024: `com.docker.backend` (Docker ✅)
+  - PID 8072: `postgres.exe` (PostgreSQL 17 NATIVO no Windows ❌)
+
+  **Causa raiz:** psycopg conectava no PostgreSQL nativo, não no Docker.
+
+- **Solução:**
   ```powershell
   Stop-Service postgresql-x64-17
   Set-Service postgresql-x64-17 -StartupType Manual
   ```
-  - Parou o serviço PostgreSQL nativo do Windows
-  - Configurou para não iniciar automaticamente no reboot
-  - Liberou porta 5432 exclusivamente para Docker
 
-- **Validação Final:**
-  - `netstat` após parar: Apenas PID 18024 (Docker) ✅
-  - Teste psycopg direto: `SUCESSO! Conectado ao PostgreSQL Docker` ✅
-  - `SELECT version()`: `PostgreSQL 15.18 (Debian 15.18-1.pgdg13+1)` ✅
-  - API iniciou sem erros: ✅
+- **Validação final:**
+  - Apenas Docker escutando na porta 5432 ✅
+  - `SELECT version()` → PostgreSQL 15 Docker ✅
+  - API iniciou sem erros ✅
 
-- **Lições Críticas Aprendidas:**
-  1. **Multiplos processos na mesma porta** → Sempre usar `netstat -ano` ou `Get-Process` para diagnosticar
-  2. **Port aberta ≠ Aplicação correta** → Verificar qual processo está realmente escutando
-  3. **Ferramentas diferentes, comportamentos diferentes** → `psql` (libpq) vs `psycopg` (Python driver)
-  4. **PostgreSQL 16 vs 15** → Mudança de autenticação SCRAM-SHA-256 causou confusão
-  5. **Documentação salva vidas** → Criar RELATORIO-DEBUG-POSTGRESQL.md ajudou a organizar pensamento
+- **Lições:**
+  1. Porta aberta ≠ aplicação correta respondendo
+  2. Sempre usar `netstat -ano` para diagnosticar conflitos de porta
+  3. Ferramentas diferentes (psql vs psycopg) podem se comportar diferente
+  4. Documentar o processo de debug ajuda a organizar o raciocínio
 
-- **Arquivos Criados Nesta Sessão:**
-  - `RELATORIO-DEBUG-POSTGRESQL.md` → Documentação completa do debugging
-  - Atualizado `docker-compose.yml` → postgres:15 (compatibilidade melhor)
-  - Confirmado `config.py` e `database.py` estão corretos
+---
 
-- **Status:** ✅ API 100% funcional com PostgreSQL 15 Docker
-- **Próximo passo:** Testar endpoints no Swagger (GET /, POST /auth/signup, POST /auth/login)
+### Log 21 — Dockerfile + docker-compose.yml atualizado
 
-#### 21. Configuração Docker (Dockerfile + docker-compose.yml)
+- **O quê:** Containerizar a API junto com o banco
+- **Criado:** `backend/Dockerfile`
+  ```
+  FROM python:3.12-slim
+  RUN pip install -r requirements.txt
+  COPY . .
+  CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0"]
+  ```
+- **Adicionado ao docker-compose.yml:** serviço `api` com `build: ./backend`, `ports: 8000:8000`
+- **Bugs encontrados e corrigidos:**
+  - `DATABASE_URL` sem `+psycopg` no driver → corrigido
+  - Host `localhost` → `postgres` (nome do serviço Docker)
+- **Resultado:** API + PostgreSQL rodando juntos em Docker ✅
+- **Commit:** `daf7de5 feat: adicionar backend/Dockerfile para empacotamento da API em Docker`
 
-- **O quê:** Criar Dockerfile para empacotar API e atualizar docker-compose.yml com serviço api
-- **Criado:** `backend/Dockerfile` (6 linhas: FROM python:3.12 → RUN pip → COPY → CMD uvicorn)
-- **Atualizado:** `docker-compose.yml` → adicionado serviço `api` com `build: ./backend`, `ports: 8000:8000`
-- **Debug:** 
-  - ❌ DATABASE_URL em docker-compose faltava driver `+psycopg` → Corrigido
-  - ❌ Host era `localhost` (local) → Mudado para `postgres` (service name em Docker)
-  - ✅ Segundo `docker-compose up` → **API RODANDO!** Uvicorn em http://0.0.0.0:8000
-  - ✅ SQLAlchemy criou tabela `users` automaticamente via `init_db()`
-- **Resultado:** API + PostgreSQL rodando em Docker, containers conectados, volume persistindo dados
-- **Status:** ✅ Docker funcional, pronto para commit
+---
+
+**✅ Sprint 4 Concluída**
+- API containerizada no Docker
+- PostgreSQL em container com volume persistente
+- Conflito de portas diagnosticado e resolvido
+- `docker-compose up` sobe tudo com um comando
+
+---
+
+<a name="sprint-5"></a>
+## Sprint 5 — Segurança e Boas Práticas
+
+**Período:** 31/05/2026
+**Objetivo:** Remover credenciais hardcoded, externalizar para `.env`, documentar práticas de segurança e incorporar fluxo profissional (branches, PRs, sprints) nas instruções do projeto.
+**Branch:** `main`
+
+---
+
+### Log 22 — Externalizar credenciais para .env
+
+- **Problema identificado:** `config.py` tinha `DATABASE_URL` e `SECRET_KEY` com valores reais hardcoded
+- **Risco:** Qualquer um com acesso ao repositório público poderia ver as credenciais
+- **O quê foi feito:**
+  - Removidos valores hardcoded de `config.py`
+  - Adicionado `Field(..., description="...")` com descrições em português
+  - Criado `backend/.env` local (nunca commitado — está no `.gitignore`)
+  - Padronizado `backend/.env.example` (template público sem valores reais)
+  - Corrigido typo: `ACCES_TOKEN_EXPIRE_HOURS` → `ACCESS_TOKEN_EXPIRE_HOURS`
+- **Validação:** `python -c "from app.config import settings; print(settings.DATABASE_URL)"` → valor correto ✅
+- **Commit:** `9a7521c security: externalizar credenciais sensíveis para .env`
+
+---
+
+### Log 23 — Remover credenciais hardcoded do docker-compose.yml
+
+- **Problema identificado:** `docker-compose.yml` tinha `POSTGRES_USER`, `POSTGRES_PASSWORD` e `DATABASE_URL` com valores fixos
+- **O quê foi feito:**
+  - `DATABASE_URL: "postgresql+psycopg://..."` → `DATABASE_URL: ${DATABASE_URL}`
+  - `POSTGRES_USER: postgres` → `POSTGRES_USER: ${POSTGRES_USER}`
+  - `POSTGRES_PASSWORD: postgres` → `POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}`
+  - Adicionadas `POSTGRES_USER` e `POSTGRES_PASSWORD` ao `backend/.env`
+- **Princípio:** docker-compose lê automaticamente o `.env` na raiz
+- **Commit:** `bbb4986 security: remover credenciais hardcoded de docker-compose.yml`
+
+---
+
+### Log 24 — Criar docs/SECURITY.md
+
+- **O quê:** Guia completo de segurança para o projeto
+- **Conteúdo:**
+  - Diferença entre `.env` (privado) e `.env.example` (template público)
+  - Passo a passo de configuração do ambiente
+  - Como gerar `SECRET_KEY` segura para produção
+  - Checklist de segurança
+  - Referências: 12-factor app, OWASP
+- **Por quê:** Recrutador vê que além de implementar segurança, você documenta para outros
+- **Commit:** `d996c10 docs: adicionar SECURITY.md com guia de configuração de variáveis de ambiente`
+
+---
+
+### Log 25 — Fluxo profissional nas instruções de desenvolvimento
+
+- **O quê:** Seção `[FLUXO PROFISSIONAL - GITHUB & GIT]` adicionada a `docs/INSTRUCOES-CLAUDE-CODE.md`
+- **Conteúdo adicionado:**
+  - Padrão de branches (`feature/*`, `security/*`, `bugfix/*`, `hotfix/*`)
+  - Conventional Commits com tipos e exemplos reais
+  - Template profissional de Pull Request
+  - Estrutura de Sprint (planejamento → desenvolvimento → review)
+  - Checklist de Code Review
+  - O que recrutadores veem no GitHub
+  - Passo a passo para aplicar na próxima feature
+- **Por quê:** Trabalhar como um profissional requer pensar como um profissional
+- **Commit:** `6b0b515 docs: adicionar fluxo profissional (branches, PRs, sprints) às instruções de desenvolvimento`
+
+---
+
+**✅ Sprint 5 Concluída**
+- Zero credenciais hardcoded no repositório
+- `.env` local e nunca commitado
+- `.env.example` como template público
+- Segurança documentada em SECURITY.md
+- Fluxo profissional documentado nas instruções
+- 4 commits profissionais no histórico
+
+---
+
+## STATUS GERAL DO PROJETO
+
+| Camada | Componente | Status |
+|--------|-----------|--------|
+| Config | `config.py` + `.env` | ✅ Seguro |
+| Model | `user.py` | ✅ Pronto |
+| Schema | `user_schema.py` | ✅ Pronto |
+| Repository | `user_repository.py` | ✅ Pronto |
+| Service | `auth_service.py` | ✅ Pronto |
+| Route | `auth.py` | ✅ Pronto |
+| Database | `database.py` | ✅ Pronto |
+| DevOps | `Dockerfile` + `docker-compose.yml` | ✅ Funcional |
+| Segurança | `.env` + `SECURITY.md` | ✅ Documentado |
+| Docs | `ARQUITETURA.md` + `SECURITY.md` | ✅ Completo |
+
+---
+
+## PRÓXIMAS SPRINTS (BACKLOG)
+
+| Sprint | Objetivo | Prioridade |
+|--------|----------|-----------|
+| Sprint 6 | Testes unitários (pytest) para AuthService | 🔴 Alta |
+| Sprint 7 | CI/CD com GitHub Actions | 🟡 Média |
+| Sprint 8 | Feature: Lançamentos (CRUD completo) | 🔴 Alta |
+| Sprint 9 | Frontend React + TypeScript | 🟡 Média |
+| Sprint 10 | Integração Frontend ↔ Backend | 🟡 Média |
