@@ -465,6 +465,49 @@
 
 ---
 
+---
+
+<a name="sprint-6"></a>
+## Sprint 6 — Testes Unitários (EM PROGRESSO)
+
+**Período:** 31/05/2026
+**Objetivo:** Implementar testes unitários para AuthService usando pytest.
+**Branch:** `main`
+
+---
+
+### Log 26 — Estrutura de testes e testes básicos para AuthService
+
+- **O quê:** Criada estrutura de testes com pytest e 3 testes para métodos de senha
+- **Passos:**
+  1. Criada pasta `backend/tests/` com `__init__.py`
+  2. Criado `backend/tests/test_auth_service.py` com 3 testes:
+     - `test_hash_password()` → valida que senha é hasheada (nunca salva em texto puro)
+     - `test_verify_password_correct()` → valida que senha correta retorna True
+     - `test_verify_password_wrong()` → valida que senha errada retorna False
+  3. Configurado `.env` na raiz do projeto (necessário para pytest rodar)
+  4. Executado `pytest backend/tests/test_auth_service.py -v` → **3/3 testes passando** ✅
+- **Aprendizado:** Testes unitários isolam e validam cada método sem precisar rodar a API inteira
+- **Por quê:** Recrutador vê: "Sabe TDD, código confiável, pronto pra trabalhar em equipe"
+
+### Log 27 — Refatoração de config.py (Pydantic 2.6+ best practices)
+
+- **O quê:** Atualizado `config.py` para usar `SettingsConfigDict` (forma nova recomendada)
+- **Mudança:**
+  - ❌ Antes: classe `Config` interna (deprecada)
+  - ✅ Agora: `model_config = SettingsConfigDict(...)` (Pydantic 2.6+)
+- **Importes atualizadas:** `from pydantic_settings import SettingsConfigDict`
+- **Resultado:** Warning do Pydantic desapareceu, código alinhado com best practices
+- **Por quê:** Código limpo e futuro-proof (Pydantic 3.0 removerá forma antiga)
+
+---
+
+**✅ Sprint 6 Parcialmente Concluída**
+- 3 testes básicos funcionando
+- Estrutura de testes pronta para adicionar mais testes (signup/login)
+- Config.py refatorado para Pydantic 2.6+
+- Próximas features terão testes desde o início
+
 ## PRÓXIMAS SPRINTS (BACKLOG)
 
 | Sprint | Objetivo | Prioridade |
