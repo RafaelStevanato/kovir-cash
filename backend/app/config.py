@@ -1,8 +1,10 @@
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import Field
 
 # --- Configurações da aplicação Kovir Cash --------------------------------------
 class Settings(BaseSettings):
+
+    model_config = SettingsConfigDict(env_file=".env", case_sensitive=True)
     
 
     # --- Banco de Dados ---------------------------------------------------------
@@ -28,10 +30,6 @@ class Settings(BaseSettings):
 
     DEBUG: bool = True
     
-    class Config:
-        env_file = ".env"
-        case_sensitive = True
-
 
 # --- Instância global de configurações ------------------------------------------
 
