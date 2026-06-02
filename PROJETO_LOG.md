@@ -15,7 +15,7 @@
 | [Sprint 3](#sprint-3) | Backend Core (Autenticação) | ✅ Concluída |
 | [Sprint 4](#sprint-4) | Docker e DevOps | ✅ Concluída |
 | [Sprint 5](#sprint-5) | Segurança e Boas Práticas | ✅ Concluída |
-
+| [Sprint 6](#sprint-6) | Testes Unitários (AuthService) | ✅ Concluída |
 ---
 
 <a name="sprint-1"></a>
@@ -502,17 +502,29 @@
 
 ---
 
-**✅ Sprint 6 Parcialmente Concluída**
-- 3 testes básicos funcionando
-- Estrutura de testes pronta para adicionar mais testes (signup/login)
-- Config.py refatorado para Pydantic 2.6+
-- Próximas features terão testes desde o início
+### Log 28 — Testes para signup(), login() e create_access_token()
+
+- **O quê:** Completar cobertura de testes com mock do UserRepository
+- **Testes adicionados:**
+  - `test_signup_email_exists()` → valida ValueError quando email já existe
+  - `test_signup_success()` → valida fluxo feliz (retorna access_token + user)
+  - `test_login_success()` → valida autenticação com senha correta
+  - `test_create_access_token()` → valida geração de JWT token
+- **Aprendizado:** MagicMock simula o banco sem precisar rodar PostgreSQL
+- **Conceito novo:** pytest.raises() para testar que exceções são lançadas
+- **Resultado:** 7/7 testes passando sem warnings ✅
+- **Fix aplicado:** deprecated datetime.utcnow() → datetime.now(timezone.utc)
+
+**✅ Sprint 6 Concluída**
+- 7 testes unitários passando (hash, verify, signup, login, token)
+- MagicMock para isolar Service do Repository
+- pytest.raises() para testar exceções
+- Fix: deprecated datetime.utcnow() corrigido
 
 ## PRÓXIMAS SPRINTS (BACKLOG)
 
 | Sprint | Objetivo | Prioridade |
 |--------|----------|-----------|
-| Sprint 6 | Testes unitários (pytest) para AuthService | 🔴 Alta |
 | Sprint 7 | CI/CD com GitHub Actions | 🟡 Média |
 | Sprint 8 | Feature: Lançamentos (CRUD completo) | 🔴 Alta |
 | Sprint 9 | Frontend React + TypeScript | 🟡 Média |
