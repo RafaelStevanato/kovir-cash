@@ -1,5 +1,5 @@
 from passlib.context import CryptContext
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from jose import jwt
 from app.models.user import User
 from app.repositories.user_repository import UserRepository
@@ -33,7 +33,7 @@ class AuthService:
     def create_access_token(user_id: str) -> str:
         payload = {
             "sub": user_id,  # subject = user_id
-            "exp": datetime.utcnow() + timedelta(hours=settings.ACCESS_TOKEN_EXPIRE_HOURS),
+            "exp": datetime.now(timezone.utc) + timedelta(hours=settings.ACCESS_TOKEN_EXPIRE_HOURS),
         }
         token = jwt.encode(payload, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
         

@@ -1,4 +1,6 @@
 # --- Importa o serviço que vamos testar -----------------------------------
+import pytest
+from unittest.mock import MagicMock
 from app.services.auth_service import AuthService
 
 
@@ -30,3 +32,70 @@ def test_verify_password_wrong():
     
     # Tenta verificar com senha diferente — deve ser False
     assert AuthService.verify_password("senha_errada", hashed) == False
+
+# Teste de e-mail já existente (deve ser rejeitado)
+def test_signup_email_exists():
+    # --- Arrange (preparar) ---
+    mock_repository = MagicMock()
+    mock_repository.get_user_by_email.return_value = {"id": 1, "email": "rafael@example.com"}
+
+    service = AuthService(mock_repository)
+
+    with pytest.raises(ValueError) as exc_info:
+        service.signup("rafael@example.com", "senha123")
+    
+    assert str(exc_info.value) == "E-mail já registrado por outro usuário."
+
+def test_signup_success():
+    # --- Arrange ---
+    mock_repository = MagicMock()
+    mock_repository.get_user_by_email.return_value = None  # Email NÃO existe
+    
+    mock_user = MagicMock()
+    mock_user.id = 1
+    mock_user.email = "rafael@example.com"
+    
+    mock_repository.create_user.return_value = mock_user
+    
+    service = AuthService(mock_repository)
+    
+    # --- Act ---
+    result = service.signup("rafael@example.com", "senha123")
+    
+    # --- Assert ---
+    assert "access_token" in result
+    assert "token_type" in result
+    assert result["user"]["email"] == "rafael@example.com"
+
+def test_login_success():
+    # --- Arrange ---
+    mock_repository = MagicMock()
+    
+    mock_user = MagicMock()
+    mock_user.id = 1
+    mock_user.email = "rafael@example.com"
+    mock_user.password = AuthService.hash_password("senha123")  # Hash correto
+    
+    mock_repository.get_user_by_email.return_value = mock_user
+    
+    service = AuthService(mock_repository)
+    
+    # --- Act ---
+    result = service.login("rafael@example.com", "senha123")
+    
+    # --- Assert ---
+    assert "access_token" in result
+    assert result["user"]["email"] == "rafael@example.com"
+
+def test_create_access_token():
+    # --- Arrange ---
+    user_id = "123"
+    
+    # --- Act ---
+    token = AuthService.create_access_token(user_id)
+    
+    # --- Assert ---
+    assert isinstance(token, str)
+    assert len(token) > 0
+
+
