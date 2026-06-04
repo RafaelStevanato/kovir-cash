@@ -16,6 +16,7 @@
 | [Sprint 4](#sprint-4) | Docker e DevOps | ✅ Concluída |
 | [Sprint 5](#sprint-5) | Segurança e Boas Práticas | ✅ Concluída |
 | [Sprint 6](#sprint-6) | Testes Unitários (AuthService) | ✅ Concluída |
+| [Sprint 7](#sprint-7) | CI/CD com GitHub Actions | ✅ Concluída |
 ---
 
 <a name="sprint-1"></a>
@@ -521,11 +522,38 @@
 - pytest.raises() para testar exceções
 - Fix: deprecated datetime.utcnow() corrigido
 
+<a name="sprint-7"></a>
+## Sprint 7 — CI/CD com GitHub Actions
+
+**Período:** 04/06/2026
+**Objetivo:** Automatizar a execução de testes a cada push no GitHub.
+**Branch:** `main`
+
+---
+
+### Log 29 — Criar workflow de testes automáticos
+
+- **O quê:** Arquivo `.github/workflows/tests.yml` criado do zero
+- **O que faz:** A cada `git push` na branch `main`, o GitHub:
+  1. Sobe uma máquina Ubuntu
+  2. Instala Python 3.12
+  3. Instala dependências do projeto
+  4. Roda `pytest backend/tests/ -v`
+- **Resultado:** ✅ Verde em 21 segundos no primeiro run
+- **Por quê:** CI/CD garante que nenhum push quebra o código sem avisar
+- **Commit:** `ci: adicionar workflow GitHub Actions para rodar testes automaticamente`
+
+---
+
+**✅ Sprint 7 Concluída**
+- Pipeline CI/CD ativo no GitHub Actions
+- Testes rodam automaticamente a cada push
+- Feedback em menos de 30 segundos
+
 ## PRÓXIMAS SPRINTS (BACKLOG)
 
 | Sprint | Objetivo | Prioridade |
 |--------|----------|-----------|
-| Sprint 7 | CI/CD com GitHub Actions | 🟡 Média |
 | Sprint 8 | Feature: Lançamentos (CRUD completo) | 🔴 Alta |
 | Sprint 9 | Frontend React + TypeScript | 🟡 Média |
 | Sprint 10 | Integração Frontend ↔ Backend | 🟡 Média |
