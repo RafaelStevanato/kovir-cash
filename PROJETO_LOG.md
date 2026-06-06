@@ -550,6 +550,38 @@
 - Testes rodam automaticamente a cada push
 - Feedback em menos de 30 segundos
 
+<a name="sprint-8"></a>
+## Sprint 8 — Feature: Lançamentos (CRUD completo)
+
+**Período:** 05/06/2026
+**Objetivo:** Implementar CRUD completo de lançamentos financeiros.
+**Branch:** `main`
+
+---
+
+### Log 30 — Criar model Lancamento
+
+- **O quê:** Arquivo `backend/app/models/lancamento.py` criado
+- **Campos:**
+  - `id`: UUID, primary key, auto-gerado
+  - `usuario_lancamento`: UUID, ForeignKey → `users.id`
+  - `tipo_lancamento`: String ("receita" ou "despesa")
+  - `valor_lancamento`: Numeric(10, 2) — tipo correto para dinheiro
+  - `data_lancamento`: DateTime
+  - `descricao_lancamento`: String, nullable=True (opcional)
+  - `criado_em`: DateTime com timestamp UTC automático
+- **Decisões:**
+  - `Base` compartilhado com `user.py` (um único Base por projeto)
+  - `Lancamento` importado em `database.py` para `init_db()` criar a tabela
+  - `descricao` opcional — usuário pode registrar sem descrição
+- **CI:** ✅ Verde no GitHub Actions
+
+---
+
+**🔄 Sprint 8 Em Progresso**
+- Model criado e validado
+- Próximo: Schema → Repository → Service → Route
+
 ## PRÓXIMAS SPRINTS (BACKLOG)
 
 | Sprint | Objetivo | Prioridade |
