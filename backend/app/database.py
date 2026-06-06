@@ -2,6 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from app.config import settings
 from app.models.user import Base
+from app.models.lancamento import Lancamento
 
 # --- Criar engine SQLAlchemy conectado ao PostgreSQL ----------------------------
 engine = create_engine(
